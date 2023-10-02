@@ -6,7 +6,7 @@ const SHOPIFY_GRAPHQL_ENDPOINT = `https://${SHOPIFY_URL}/admin/api/2023-01/graph
 
 
 const searchFile = async (req, res) => {
-    const fileName = `${req}.png`;
+    const fileName = req;
     console.log(fileName);
     const query = `
         {
