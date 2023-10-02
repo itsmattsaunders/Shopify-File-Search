@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "deploy": "ttab gcloud functions deploy searchShopifyFiles --runtime nodejs20 --trigger-http --entry-point=searchFileAPI --allow-unauthenticated"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "axios": "^1.5.1",
-    "dotenv": "^16.3.1"
+    "dotenv": "^16.3.1",
+    "ttab": "^0.8.0"
   }
 }

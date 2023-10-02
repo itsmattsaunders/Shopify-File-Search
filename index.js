@@ -7,7 +7,6 @@ const SHOPIFY_GRAPHQL_ENDPOINT = `https://${SHOPIFY_URL}/admin/api/2023-01/graph
 
 const searchFile = async (req, res) => {
     const fileName = req;
-    console.log(fileName);
     const query = `
         {
             files(first: 1, query: "filename:${fileName}") {
@@ -62,8 +61,6 @@ const searchFileAPI = async (req, res) => {
         console.error('Error:', error.message);
     }
 };
-
-searchFileAPI({body: "SCREEN_SHOT_2021-03-20_AT_4.09.44_AM"}, null);
 
 module.exports = {
     searchFile,
