@@ -1,7 +1,6 @@
 require('dotenv').config();
 const axios = require('axios');
 const { SHOPIFY_URL, SHOPIFY_API } = process.env;
-console.log(SHOPIFY_API, SHOPIFY_URL);
 const SHOPIFY_GRAPHQL_ENDPOINT = `https://${SHOPIFY_URL}/admin/api/2023-01/graphql.json`;
 
 
