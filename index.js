@@ -37,8 +37,6 @@ const searchFile = async (req, res) => {
             }
         });
 
-        console.log()
-
         const files = response.data.data.files.edges[0].node.preview.image.url;
         if (files) {
             return files;
