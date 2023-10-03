@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^1.5.1",
+    "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "ttab": "^0.8.0"
   }

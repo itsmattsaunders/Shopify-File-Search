@@ -1,5 +1,6 @@
 require('dotenv').config();
 const axios = require('axios');
+const cors = require('cors');
 const { SHOPIFY_URL, SHOPIFY_API } = process.env;
 const SHOPIFY_GRAPHQL_ENDPOINT = `https://${SHOPIFY_URL}/admin/api/2023-01/graphql.json`;
 
@@ -47,18 +48,28 @@ const searchFile = async (req, res) => {
     }
 };
 
-const searchFileAPI = async (req, res) => {
+const searchFileAPI = (req, res) => {
+    const corsHandler = cors({    
+        origin: 'https://pete.co.nz'
+    });
+
     const fileName = req.body;
-    try {
-        const file = await searchFile(fileName);
-        if (file) {
-            console.log('File found:', file);
-        } else {
-            console.log('File not found.');
+    
+    corsHandler(req, res, async () => {
+        try {
+            const file = await searchFile(fileName);
+            if (file) {
+                console.log('File found:', file);
+                res.status(200).send(file);
+            } else {
+                console.log('File not found.');
+                res.status(404).send('File not found');
+            }
+        } catch (error) {
+            console.error('Error:', error.message);
+            res.status(500).send('Internal Server Error');
         }
-    } catch (error) {
-        console.error('Error:', error.message);
-    }
+    });
 };
 
 module.exports = {
