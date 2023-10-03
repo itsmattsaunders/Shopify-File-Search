@@ -50,10 +50,12 @@ const searchFile = async (req, res) => {
 
 const searchFileAPI = (req, res) => {
     const corsHandler = cors({    
-        origin: 'https://pete.co.nz'
+        origin: 'https://pete.co.nz',
+        methods: ['GET', 'POST'],
+        allowedHeaders: ['Content-Type']
     });
 
-    const fileName = req.body;
+    const fileName = req.body.fileName;
     
     corsHandler(req, res, async () => {
         try {
